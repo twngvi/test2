@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Test_Midterm.Data.Book>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>danh sách những quyển sách</h1>
+<a class="btn btn-success" asp-action="Create">Thêm tác giả mới</a>
+<form asp-action="Index">
+    <input name="Keyword" placeholder="Please input keyword here" />
+    <button class="btn btn-success">Search</button>
+</form>
+<table class="table">
+    <tr>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookId</td>
+                <td>@item.Title</td>
+                <td>@item.Author.Name</td>
+                <td>@item.Description</td>
+                <td><img src="~/Images/Book/@item.CoverImagePath" alt="@item.Title" style="width: 100px; height: auto;" /></td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.BookId">Sửa</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BookId">Xoá</a>
+            </tr>
+        }
+    </tbody>
+</table>
+

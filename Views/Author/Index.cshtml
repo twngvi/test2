@@ -1,0 +1,32 @@
+﻿@model List<Test_Midterm.Data.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách tác giả</h1>
+<a class="btn btn-success" asp-action="Create">Thêm tác giả mới</a>
+<a class="btn-suscess" asp-action="BooksByAuthor">Tổng sách</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tên tác giả</th>
+            <th>Bio</t>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.AuthorId</td>
+                <td>@author.Name</td>
+                <td>@author.Bio</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@author.AuthorId">Sửa</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@author.AuthorId">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

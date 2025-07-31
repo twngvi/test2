@@ -1,0 +1,28 @@
+﻿@model Test_Midterm.Data.Book
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+<form asp-action="Delete" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Author"></label>
+        <input asp-for="Author" value="@Model.Author.Name" readonly class="form-control"></>
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CoverImagePath" class="control-label"></label>
+        <input asp-for="CoverImagePath" type="file" name="image" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Xóa</button>
+</form>
